@@ -12,7 +12,7 @@ async function main() {
     Array.from({ length: 5 }).map(async () => {
       return prisma.user.create({
         data: {
-          email:  `${faker.person.fullName()}@test.com`,
+          email:  faker.internet.exampleEmail(),
           name: faker.person.fullName(),
         },
       });
