@@ -17,12 +17,13 @@ const GameLogin = () => {
   
   const [logInError, setLogInError] = useState('') 
   const [email, setEmail] = useState('') 
+  const [fadeOut, setFadeOut] = useState(false);
 
   const { mutate, isPending } = useMutation({
     mutationFn: async (data: ICredentials) => await userLogin(data),
     onSuccess: async (data) => {
       if (data?.status === 'not_found') {
-        setLogInError('Account not Found')
+        setLogInError("Account not found. If you don’t have one, please create a new account.");
         return
       } 
 
@@ -32,8 +33,12 @@ const GameLogin = () => {
           setLogInError('Invalid session data')
           return
       }
-      login(token, user) 
-      router.push('/tower')
+
+      setFadeOut(true); 
+      setTimeout(() => {
+        login(token, user);
+        router.push('/tower');
+      }, 1000);
     },
     onError: async (error) => {
         setLogInError(error.message) 
@@ -42,14 +47,12 @@ const GameLogin = () => {
 
   const onSubmit = async (values: any) => {
       mutate({email: values})
-  }  
-
-  console.log("email: ", email)
+  }   
 
   return (
-    <div   className="flex min-h-screen bg-gradient-to-br from-indigo-950 to-purple-900 text-slate-200 justify-center items-center p-4">
-      <AnimatedDiv animation={'FadeIn'}>
-        <Card className="w-full max-w-md bg-slate-900 border-purple-500 border shadow-lg shadow-purple-500/20">
+    <div className="flex min-h-screen bg-gradient-to-br from-gray-950 to-indigo-950 text-slate-200 justify-center items-center p-4">
+      <AnimatedDiv animation={fadeOut ? "FadeOut":'FadeIn'}>
+        <Card className="w-full max-w-md min-w-[28rem] min-h-[500px] bg-slate-900 border-purple-500 border shadow-lg shadow-purple-500/20">
           <CardHeader className="space-y-1 text-center">
             <div className="mx-auto mb-4 bg-purple-600 p-2 rounded-full w-16 h-16 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">

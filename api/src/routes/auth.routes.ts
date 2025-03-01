@@ -13,17 +13,13 @@ authRoutes.post(
 	zValidator('json', userLogInSchema.json),
 	async (c: Context) => {
 		try {
-			const body = await c.req.json(); 
- 
-			console.log("body: ", body)
-
-			const user = await findUser({ email: body.email });
-			console.log("user: ", user)
+			const body = await c.req.json();  
+			const user = await findUser({ email: body.email }); 
 
 			if(!user){
 				return c.json({status: "not_found"}, 200);
 			} 
-			
+
 			const payload = {
 				...user,
 				exp: Math.floor(Date.now() / 1000) + 60 * 60,

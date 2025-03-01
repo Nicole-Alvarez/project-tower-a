@@ -10,7 +10,7 @@ type Props = {
   | "Hover" | "SlideDown"
   | "Bubble" | "SlideFromRight"
   | "SlideFromLeft" | "FadeInText"
-  | "Shake" | "ZoomIn" | "SlideUp" | "HoverSlideUp" | "";
+  | "Shake" | "ZoomIn" | "SlideUp" | "HoverSlideUp" | "FadeOut" |"";
   children: ReactNode;
   duration?: number;
   scale?: number;
@@ -26,6 +26,8 @@ const AnimatedDiv = (props: PropsWithChildren<Props>) => {
       return EaseInRight({ ...props })
     case "FadeIn":
       return FadeIn({ ...props })
+      case "FadeOut":
+      return FadeOut({ ...props })
     case "Hover":
       return Hover({ ...props })
     case "SlideDown":
@@ -248,6 +250,19 @@ const ZoomIn = ({ className, delay, duration, children }: Props) => {
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: duration ?? 0.5, ease: "easeInOut", delay }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+const FadeOut = ({ className, delay, duration, children }: Props) => {
+  return (
+    <motion.div
+      className={className}
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 0 }}   
+      transition={{ duration: duration ?? 0.5, ease: "easeOut", delay }}
     >
       {children}
     </motion.div>
