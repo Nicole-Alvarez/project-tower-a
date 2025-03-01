@@ -68,13 +68,6 @@ export const resendVerificationLinkSchema = {
 
 export const userLogInSchema = {
   json: z.object({
-    email: z.string().email(),
-    password: z.string()
-      .trim().min(1, {
-        message: 'Password is required'
-      }),
-    userType: z.enum(['TEACHER', 'STUDENT'], {
-        message: 'Must select a valid user type.',
-    }).optional(),  
+    email: z.string().email(), 
   })
 }

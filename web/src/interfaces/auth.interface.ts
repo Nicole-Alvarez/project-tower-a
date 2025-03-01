@@ -7,9 +7,7 @@ export interface ISessionData {
 }
 
 export interface ICredentials {
-  email: string;
-  password: string;
-  userType?: string;
+  email: string; 
 }
 
 export interface IStudentSignUp {
