@@ -58,7 +58,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Neek
+            Neeks
           </a>
         </div>
       </main>
