@@ -16,6 +16,8 @@ authRoutes.post(
 			const body = await c.req.json();  
 			const user = await findUser({ email: body.email }); 
 
+			console.log("this")
+
 			if(!user){
 				return c.json({status: "not_found"}, 200);
 			} 

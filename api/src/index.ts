@@ -8,6 +8,7 @@ import authRoutes from "./routes/auth.routes";
 import { authMiddleware } from "./helpers/middleware"; 
 import userRoutes from "./routes/user.route"; 
 import publicTestRoutes from "./routes/public-test.routes";
+import mobRoutes from "./routes/mob.route";
 
 type Variables = JwtVariables;
 
@@ -31,6 +32,7 @@ apiv1.get("/", (c) => {
 });
 
 apiv1.route('/users', userRoutes); 
+apiv1.route('/mobs', mobRoutes); 
 
 app.use("/api/v1/*", authMiddleware);
 

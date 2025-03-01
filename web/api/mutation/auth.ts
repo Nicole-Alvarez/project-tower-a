@@ -2,7 +2,7 @@ import { AxiosError } from 'axios'
 import axiosInstance from '@/utils/axios-config' 
 
 export const userLogin = async (data: any): Promise<any> => {
-  try {
+  try { 
     const response = await axiosInstance.post('/auth/login', data);
     return response.data;
   } catch(error) {

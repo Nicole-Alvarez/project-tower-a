@@ -3,16 +3,31 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql" 
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id                              Int                               @id @default(autoincrement())
-  email                           String                            
-  name                            String? 
-  createdAt                       DateTime                          @default(now()) @db.Timestamptz(3)
-  updatedAt                       DateTime                          @updatedAt @db.Timestamptz(3) 
+enum MobType {
+  MOB
+  ELITE
+  BOSS
 }
 
- 
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+}
+
+model Mob {
+  id        Int      @id @default(autoincrement())
+  mob_id    String   @unique
+  name      String?
+  type      MobType
+  health    Int
+  skill     String?
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+}
