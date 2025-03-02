@@ -1,13 +1,14 @@
 {
 	"name": "api",
+	"type": "module",
 	"prisma": {
 		"seed": "node prisma/seed.js"
 	},
 	"scripts": {
 		"dev": "tsx watch /api/src/index.ts & npx prisma studio",
 		"build": "tsc",
-		"start": "node /api/src/index.ts",
-		"postinstall": "prisma generate"
+		"start": "vercel dev",
+		"deploy": "vercel"
 	},
 	"dependencies": {
 		"@hono-storage/core": "^0.0.13",
@@ -31,6 +32,7 @@
 		"@types/node": "^20.14.6",
 		"ts-node": "^10.9.2",
 		"tsx": "^4.16.2",
-		"typescript": "^5.5.2"
+		"typescript": "^5.5.2",
+		"vercel": "^32.4.1"
 	}
 }
