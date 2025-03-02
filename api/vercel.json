@@ -1,3 +1,11 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
+    "builds": [
+        { "src": "api/index.ts", "use": "@vercel/node" }
+    ],
+    "routes": [
+        { "src": "/(.*)", "dest": "/api/index.ts" }
+    ],
+    "env": {
+        "PRISMA_MIGRATE_SKIP": "true"
+    }
 }
