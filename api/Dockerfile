@@ -7,8 +7,8 @@ WORKDIR /app
 
 COPY . .
 
-ENV DATABASE_URL postgres://postgres:vC7vqhqq4cZTev3hF48spvE3hZakDVBaTfQBQc8qg1FPXFwlkIIxozlzaZzdyEW9@157.245.62.184:5433/postgres
-ENV JWT_SECRET lms2024@secret
+ENV DATABASE_URL postgresql://neondb_owner:npg_VGstvMy78mpI@ep-damp-frog-a94w5ime-pooler.gwc.azure.neon.tech/neondb?sslmode=require
+ENV JWT_SECRET d89f5967c264e3bf22be142835c718ea2a9f4ab79637909cc2f2699960b6cbc942e99bca575ffaeb405e7893b4fb114e14d2050fb4e92907c02afa7212445120
 
 RUN npm ci && \
 	npx prisma generate && \
