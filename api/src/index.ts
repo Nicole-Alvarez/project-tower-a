@@ -15,7 +15,15 @@ type Variables = JwtVariables;
 const app = new Hono();
 
 // middlewares
-app.use("/*", cors());
+// app.use("/*", cors());
+app.use(
+  cors({
+    origin: "*", // Allow all origins
+    allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // Allow cookies/auth headers if needed
+  })
+);
 app.use(logger());
 app.use(prettyJSON());
 app.notFound((c) => c.json({ message: "Not Found", ok: false }, 404));
