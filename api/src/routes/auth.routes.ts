@@ -1,7 +1,6 @@
 import { Hono, type Context } from "hono";
 import { findUser} from "../services/auth";
-import { sign, verify } from "hono/jwt";
-import argon2 from "argon2";
+import { sign } from "hono/jwt"; 
 import { env } from "hono/adapter";
 import { zValidator } from "@hono/zod-validator";
 import { userLogInSchema,  } from "../schemas/auth.schema";

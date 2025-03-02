@@ -1,8 +1,4 @@
-import dayjs from "dayjs";
-import { prisma } from "../helpers/db";
-import { User } from "@prisma/client";
-import { ISearchUsers, } from "../interfaces/user.interface";
-
+import { prisma } from "../helpers/db"; 
  
 export const findUserById = async (id: number) => {
   const user = await prisma.user.findFirst({
