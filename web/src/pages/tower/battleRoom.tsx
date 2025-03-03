@@ -142,9 +142,20 @@ const BattleRoom = () => {
                     <MobTest1 />
                 </div>
             </div>
-            <div className="flex w-[900px] h-[600px] bg-white text-slate-900 justify-center items-center p-4 rounded-lg relative">
+
+            <div className="flex w-[900px] h-[600px] bg-white text-slate-900 justify-center items-center p-4 rounded-lg relative overflow-hidden">
+                <div
+                    className="flex w-[900px] h-[750px] bg-white text-slate-900 justify-center items-center p-4 rounded-lg absolute "
+                    style={{
+                        backgroundImage:
+                            "url('https://img.craftpix.net/2023/04/Free-Nature-Backgrounds-Pixel-Art7.png')",
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
+                ></div>
+
                 {/* Round Number */}
-                <h2 className="text-4xl font-bold absolute top-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <h2 className="text-4xl font-bold absolute top-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     Round {round}
                 </h2>
 
