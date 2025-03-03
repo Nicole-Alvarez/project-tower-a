@@ -59,6 +59,10 @@ const BattleRoom = () => {
             setMovesYou([])
             setMovesEnemy([])
             setRoundResult('')
+            // setRound(round + 1)
+            if (movesYou.length > Number(roomDataRecoil.maxMoves) - 1) {
+                setRound((prevRound) => prevRound + 1)
+            }
         }
         if (movesYou.length < Number(roomDataRecoil.maxMoves)) {
             const newMovesYou = [...movesYou, move]
@@ -118,7 +122,7 @@ const BattleRoom = () => {
         // Reset for next round
         // setMovesYou([])
         // setMovesEnemy([])
-        setRound((prevRound) => prevRound + 1)
+        // setRound((prevRound) => prevRound + 1)
     }
 
     useEffect(() => {
@@ -234,13 +238,22 @@ const BattleRoom = () => {
 
                 {/* Move Selection (Bottom Left) */}
                 <div className="absolute bottom-4 left-4 flex space-x-4">
-                    <div onClick={() => handleMoves('rock')}>
+                    <div
+                        className="hover:cursor-pointer"
+                        onClick={() => handleMoves('rock')}
+                    >
                         <Rock />
                     </div>
-                    <div onClick={() => handleMoves('paper')}>
+                    <div
+                        className="hover:cursor-pointer"
+                        onClick={() => handleMoves('paper')}
+                    >
                         <Paper />
                     </div>
-                    <div onClick={() => handleMoves('scissors')}>
+                    <div
+                        className="hover:cursor-pointer"
+                        onClick={() => handleMoves('scissors')}
+                    >
                         <Scissors />
                     </div>
                 </div>
